@@ -1,5 +1,9 @@
 """
 cxfreeze command line tool
+    
+    hacky edit script started from
+    "D:\Downloads\Programing\StardewSpeak\venv"
+    currently disables all, expect python compilation
 """
 
 import argparse
@@ -19,7 +23,7 @@ __all__ = ["main"]
 
 EXCLUDES = ["tkinter"]
 
-MAIN = os.path.join("speech-client", "main.py")
+MAIN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "speech-client", "main.py")
 
 
 def get_version():
@@ -266,28 +270,28 @@ def main():
             excludes=EXCLUDES,
             packages=args.packages,
             compress=args.compress,
-            optimizeFlag=args.optimize_flag,
+            optimize=args.optimize_flag,
             path=None,
-            targetDir=app_root,
-            includeFiles=[
+            target_dir=app_root,
+            include_files=[
                 (
-                    "Lib\site-packages\webrtcvad_wheels-2.0.10.post2.dist-info",
+                    "Lib\site-packages\webrtcvad_wheels-2.0.11.post1.dist-info",
                     "lib\webrtcvad_wheels-2.0.10.post2.dist-info",
                 ),
-                ("models", "models"),
-                ("bin", "bin"),
+                # ("models", "models"),
+                # ("bin", "bin"),
             ],
-            zipIncludes=args.zip_includes,
+            zip_includes=args.zip_includes,
             silent=args.silent,
-            zipIncludePackages=args.zip_include_packages,
-            zipExcludePackages=args.zip_exclude_packages,
+            zip_include_packages=args.zip_include_packages,
+            zip_exclude_packages=args.zip_exclude_packages,
         )
-        freezer.Freeze()
+        freezer.freeze()
     app_root = os.path.abspath(os.path.join("..", "..", ".."))
-    if "c#" in steps:
-        build_release(app_root)
-    if 'zip' in steps:
-        build_release_zip(app_root)
+    # if "c#" in steps:
+    #     build_release(app_root)
+    # if 'zip' in steps:
+    #     build_release_zip(app_root)
 
 if __name__ == "__main__":
     main()

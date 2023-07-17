@@ -45,7 +45,7 @@ async def click_range(menu, start, end):
 
 
 mapping = {
-    "sell <positive_index> [through <positive_index2>]": df_utils.async_action(
+    "<positive_index> [through <positive_index2>] sell": df_utils.async_action(
         click_range, "positive_index", "positive_index2"
     ),
     "item <positive_index>": df_utils.async_action(

@@ -28,13 +28,13 @@ async def delete_game(menu, game_idx: int):
 
 
 mapping = {
-    "[go] back": menu_utils.simple_click("backButton"),
-    "(yes | ok)": menu_utils.simple_click("okDeleteButton"),
+    "(back | escape)": menu_utils.simple_click("backButton"),
+    "(yes | ok | shock)": menu_utils.simple_click("okDeleteButton"),
     "(no | cancel)": menu_utils.simple_click("cancelDeleteButton"),
-    "(load [game] | [load] game) <positive_index>": df_utils.async_action(
+    "[game | save] <positive_index> load": df_utils.async_action(
         load_game, "positive_index"
     ),
-    "delete [game] <positive_index>": df_utils.async_action(
+    "[game | save] <positive_index> delete": df_utils.async_action(
         delete_game, "positive_index"
     ),
     **menu_utils.scroll_commands(),

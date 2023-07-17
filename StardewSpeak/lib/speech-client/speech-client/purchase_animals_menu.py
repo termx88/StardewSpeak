@@ -17,10 +17,10 @@ async def buy_animal(menu, animal_index: str):
 
 
 mapping = {
-    "ok": menu_utils.simple_click("doneNamingButton"),
-    "cancel": menu_utils.simple_click("okButton"), # strange but using existing field names
+    "(ok | shock)": menu_utils.simple_click("doneNamingButton"),
+    "(cancel | escape)": menu_utils.simple_click("okButton"), # strange but using existing field names
     "random": menu_utils.simple_click("randomButton"),
-    "(buy | purchase) <animals>": df_utils.async_action(buy_animal, "animals"),
+    "<animals> (buy | purchase)": df_utils.async_action(buy_animal, "animals"),
     "pan <direction_keys>": objective.objective_action(objective.HoldKeyObjective, "direction_keys"),
 }
 

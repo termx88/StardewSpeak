@@ -24,7 +24,7 @@ async def wait_for_nibble(tss):
         await tss.wait(lambda t: t['isReeling'])
 
 mapping = {
-    "catch fish": df_utils.async_action(catch_fish)
+    "fish catch": df_utils.async_action(catch_fish)
 }
 
 def load_grammar():

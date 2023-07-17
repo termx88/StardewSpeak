@@ -7,11 +7,11 @@ ANIMAL_QUERY_MENU = 'animalQueryMenu'
 mapping = {
     # "pan <direction_keys>": objective.objective_action(objective.HoldKeyObjective, "direction_keys"), # doesn't currently work    
     "yes": menu_utils.simple_click("yesButton"),
-    "ok": menu_utils.simple_click("yesButton", "okButton"),
-    "(no | cancel)": menu_utils.simple_click("noButton"),
-    "[allow | toggle] (pregnancy | reproduction)": menu_utils.simple_click("allowReproductionButton"),
+    "(ok | shock)": menu_utils.simple_click("yesButton", "okButton"),
+    "(no | cancel | escape)": menu_utils.simple_click("noButton"),
+    "(pregnancy | reproduction)": menu_utils.simple_click("allowReproductionButton"),
     "sell": menu_utils.simple_click("sellButton"),
-    "(change | move) home [building]": menu_utils.simple_click("moveHomeButton"),
+    "home [building] (change | move)": menu_utils.simple_click("moveHomeButton"),
     "(name | rename)": menu_utils.simple_click("textBoxCC"),
     **letters.typing_commands()
 }

@@ -12,12 +12,12 @@ async def focus_quest(menu, n):
 
 
 mapping = {
-    "previous": menu_utils.simple_click("backButton"),
+    "prior": menu_utils.simple_click("backButton"),
     "next": menu_utils.simple_click("forwardButton"),
-    "cancel [quest]": menu_utils.simple_click("cancelQuestButton"),
-    "scroll up": menu_utils.simple_click("upArrow"),
-    "scroll down": menu_utils.simple_click("downArrow"),
-    "[collect] (reward | rewards)": menu_utils.simple_click("rewardBox"),
+    "[quest] cancel": menu_utils.simple_click("cancelQuestButton"),
+    "scree sauce": menu_utils.simple_click("upArrow"),
+    "scree dunce": menu_utils.simple_click("downArrow"),
+    "((reward | rewards) [collect] | shock | collect)": menu_utils.simple_click("rewardBox"),
     "(item | quest) <positive_index>": df_utils.async_action(
         focus_quest, "positive_index"
     ),

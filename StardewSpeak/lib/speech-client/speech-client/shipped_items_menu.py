@@ -13,10 +13,10 @@ async def click_category(menu, idx: int):
         await menu_utils.click_component(cmp)
 
 mapping = {
-    "ok": menu_utils.simple_click("okButton"),
+    "(ok | shock | escape)": menu_utils.simple_click("okButton"),
     '<category>': df_utils.async_action(click_category, 'category'),
-    "(back | previous)": menu_utils.simple_click("backButton"),
-    "(forward | next)": menu_utils.simple_click("forwardButton"),
+    "(back | prior)": menu_utils.simple_click("backButton"),
+    "next": menu_utils.simple_click("forwardButton"),
 }
 
 def load_grammar():

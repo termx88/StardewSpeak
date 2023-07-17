@@ -131,8 +131,8 @@ def scroll_commands(page_size=4):
     import df_utils
 
     return {
-        "scroll up [<positive_num>]": df_utils.async_action(scroll_up, 'positive_num'),
-        "scroll down [<positive_num>]": df_utils.async_action(scroll_down, 'positive_num'),
+        "scree sauce [<positive_num>]": df_utils.async_action(scroll_up, 'positive_num'),
+        "scree dunce [<positive_num>]": df_utils.async_action(scroll_down, 'positive_num'),
         "page up [<positive_num>]": df_utils.AsyncFunction(scroll_up, format_args=lambda **kw: [kw['positive_num'] * page_size]),
         "page down [<positive_num>]": df_utils.AsyncFunction(scroll_down, format_args=lambda **kw: [kw['positive_num'] * page_size]),
     }
@@ -166,7 +166,7 @@ def inventory_commands():
     commands = {
         "item <positive_index>": df_utils.async_action(inventory_focus, None, 'positive_index'),
         "row <positive_index>": df_utils.async_action(inventory_focus, 'positive_index', None),
-        "ok": df_utils.async_action(click_button, "okButton"),
+        "(ok | shock)": df_utils.async_action(click_button, "okButton"),
         "trash can": df_utils.async_action(click_button, "trashCan"),
     }
     return commands

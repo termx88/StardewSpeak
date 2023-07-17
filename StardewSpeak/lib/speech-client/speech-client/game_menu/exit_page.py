@@ -13,8 +13,8 @@ async def click_button(btn):
     await menu_utils.click_component(page[btn])
 
 mapping = {
-    "exit to desktop": df_utils.async_action(click_button, 'exitToDesktop'),
-    "exit to title": df_utils.async_action(click_button, 'exitToTitle'),
+    "[exit to] desktop | window close": df_utils.async_action(click_button, 'exitToDesktop'),
+    "[exit to] title": df_utils.async_action(click_button, 'exitToTitle'),
 }
 
 @menu_utils.valid_menu_test

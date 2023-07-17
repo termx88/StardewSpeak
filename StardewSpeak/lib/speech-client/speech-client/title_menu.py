@@ -22,8 +22,8 @@ def get_submenu(tm, menu_type):
     return submenu
 
 mapping = {
-    "<main_buttons> [game]": df_utils.async_action(click_main_button, 'main_buttons'),
-    "[change | select] (language | languages)": menu_utils.simple_click('languageButton'),
+    "[game] <main_buttons>": df_utils.async_action(click_main_button, 'main_buttons'),
+    "(language | languages) [change | select]": menu_utils.simple_click('languageButton'),
     "about": menu_utils.simple_click('aboutButton'),
 }
 

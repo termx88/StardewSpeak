@@ -30,7 +30,7 @@ async def click_side_tab(menu, idx: int):
 
 mapping = {
     "<tabs>": df_utils.async_action(click_side_tab, "tabs"),
-    "previous": menu_utils.simple_click("backButton"),
+    "prior": menu_utils.simple_click("backButton"),
     "next": menu_utils.simple_click("forwardButton"),
 }
 

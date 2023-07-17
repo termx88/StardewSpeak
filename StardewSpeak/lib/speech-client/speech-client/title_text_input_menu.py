@@ -30,9 +30,9 @@ async def load_game(menu, game_idx: int):
 
 
 mapping = {
-    "paste": menu_utils.simple_click("pasteButton"),
-    "ok": menu_utils.simple_click("doneNamingButton"),
-    "[go] back": menu_utils.simple_click("backButton"),
+    "(paste |spark)": menu_utils.simple_click("pasteButton"),
+    "(ok | shock)": menu_utils.simple_click("doneNamingButton"),
+    "(back | escape)": menu_utils.simple_click("backButton"),
 }
 
 

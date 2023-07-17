@@ -2,10 +2,14 @@ import dragonfly as df
 import constants, server, game, df_utils
 
 mouse_directions = {
-    "up": constants.NORTH,
-    "right": constants.EAST,
-    "down": constants.SOUTH,
-    "left": constants.WEST,
+    "sauce": constants.NORTH,
+    "ross": constants.EAST,
+    "dunce": constants.SOUTH,
+    "lease": constants.WEST,
+    "tar": constants.NORTHEAST,
+    "tis": constants.NORTHWEST,
+    "ted": constants.SOUTHEAST,
+    "tool": constants.SOUTHWEST,    
 }
 
 
@@ -14,19 +18,19 @@ async def move_mouse_by_tile(direction, n):
 
 
 non_repeat_mapping = {
-    "click [<positive_num>]": df_utils.async_action(server.mouse_click, "left", "positive_num"),
-    "right click [<positive_num>]": df_utils.async_action(server.mouse_click, "right", "positive_num"),
-    "mouse <mouse_directions> [<positive_num>]": df_utils.async_action(
+    "kick [<positive_num>]": df_utils.async_action(server.mouse_click, "left", "positive_num"),
+    "psychic [<positive_num>]": df_utils.async_action(server.mouse_click, "right", "positive_num"),
+    "curse <mouse_directions> [<positive_num>]": df_utils.async_action(
         move_mouse_by_tile, "mouse_directions", "positive_num"
     ),
-    "small mouse <mouse_directions> [<positive_num>]": df_utils.async_action(
+    "short curse <mouse_directions> [<positive_num>]": df_utils.async_action(
         game.move_mouse_in_direction, "mouse_directions", "positive_num"
     ),
-    "write game state": df_utils.async_action(game.write_game_state),
+    "game state write": df_utils.async_action(game.write_game_state),
     "(action | check)": df_utils.async_action(game.press_key, constants.ACTION_BUTTON),
-    "(escape | [open | close] menu)": df_utils.async_action(game.press_key, constants.MENU_BUTTON),
-    "hold mouse": df_utils.async_action(server.mouse_hold),
-    "release mouse": df_utils.async_action(server.mouse_release),
+    "(escape | menu [open | close])": df_utils.async_action(game.press_key, constants.MENU_BUTTON),
+    "(squat | kick hold)": df_utils.async_action(server.mouse_hold),
+    "(bench | kick release)": df_utils.async_action(server.mouse_release),
 }
 
 

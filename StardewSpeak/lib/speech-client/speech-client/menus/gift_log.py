@@ -4,10 +4,10 @@ import dragonfly as df
 TITLE = 'profileMenu'
 
 mapping = {
-    "previous (character | npc)": menu_utils.simple_click('previousCharacterButton'),
-    "next (character | npc)": menu_utils.simple_click('nextCharacterButton'),
-    "previous [gift] type": menu_utils.simple_click('backButton'),
-    "next [gift] type": menu_utils.simple_click('forwardButton')
+    "(character | npc) prior": menu_utils.simple_click('previousCharacterButton'),
+    "(character | npc) next": menu_utils.simple_click('nextCharacterButton'),
+    "[gift] type prior": menu_utils.simple_click('backButton'),
+    "[gift] type next": menu_utils.simple_click('forwardButton')
 }
 
 def get_grammar():

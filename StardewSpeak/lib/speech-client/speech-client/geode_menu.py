@@ -7,7 +7,7 @@ GEODE_MENU = "geodeMenu"
 
 mapping = {
     **menu_utils.inventory_commands(),
-    "(break | crack | process) geode": menu_utils.simple_click("geodeSpot"),
+    "geode (break | crack | process)": menu_utils.simple_click("geodeSpot"),
 }
 
 

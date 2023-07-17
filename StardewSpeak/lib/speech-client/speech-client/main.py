@@ -81,7 +81,8 @@ def setup_engine(silence_timeout, model_dir):
         expected_error_rate_threshold=0.05,
         # tmp_dir='kaldi_tmp',  # default for temporary directory
         # vad_aggressiveness=3,  # default aggressiveness of VAD
-        vad_padding_start_ms=0,  # default ms of required silence surrounding VAD
+        vad_aggressiveness=2,
+        vad_padding_start_ms=100,  # default ms of required silence surrounding VAD
         vad_padding_end_ms=silence_timeout,  # default ms of required silence surrounding VAD
     )
     # Call connect() now that the engine configuration is set.
@@ -131,7 +132,7 @@ def main():
             level=2,
         )
     model_dir = os.path.join(MODELS_DIR, "kaldi_model")
-    engine = setup_engine(300, model_dir)
+    engine = setup_engine(175, model_dir)
 
     # Register a recognition observer
     observer = Observer()

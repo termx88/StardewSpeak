@@ -13,20 +13,24 @@ last_faced_east_west = constants.WEST
 last_faced_north_south = constants.SOUTH
 
 direction_keys = {
-    "north": [constants.MOVE_UP_BUTTON],
-    "main": [constants.MOVE_UP_BUTTON, constants.MOVE_RIGHT_BUTTON],
-    "east": [constants.MOVE_RIGHT_BUTTON],
-    "floor": [constants.MOVE_RIGHT_BUTTON, constants.MOVE_DOWN_BUTTON],
-    "south": [constants.MOVE_DOWN_BUTTON],
-    "air": [constants.MOVE_DOWN_BUTTON, constants.MOVE_LEFT_BUTTON],
-    "west": [constants.MOVE_LEFT_BUTTON],
-    "wash": [constants.MOVE_LEFT_BUTTON, constants.MOVE_UP_BUTTON],
+    "sauce": [constants.MOVE_UP_BUTTON],
+    "tar": [constants.MOVE_UP_BUTTON, constants.MOVE_RIGHT_BUTTON],
+    "ross": [constants.MOVE_RIGHT_BUTTON],
+    "ted": [constants.MOVE_RIGHT_BUTTON, constants.MOVE_DOWN_BUTTON],
+    "dunce": [constants.MOVE_DOWN_BUTTON],
+    "tool": [constants.MOVE_DOWN_BUTTON, constants.MOVE_LEFT_BUTTON],
+    "lease": [constants.MOVE_LEFT_BUTTON],
+    "tis": [constants.MOVE_LEFT_BUTTON, constants.MOVE_UP_BUTTON],
 }
 direction_nums = {
-    "north": constants.NORTH,
-    "east": constants.EAST,
-    "south": constants.SOUTH,
-    "west": constants.WEST,
+    "sauce": constants.NORTH,
+    "ross": constants.EAST,
+    "dunce": constants.SOUTH,
+    "lease": constants.WEST,
+    "tar": constants.NORTHEAST,
+    "tis": constants.NORTHWEST,
+    "ted": constants.SOUTHEAST,
+    "tool": constants.SOUTHWEST,
 }
 nums_to_directions = {v: k for k, v in direction_nums.items()}
 cardinal_directions = (constants.NORTH, constants.EAST, constants.SOUTH, constants.WEST)
@@ -794,7 +798,7 @@ async def get_grabble_visible_objects(loc):
 
 def disallow_previous_item(previous, current):
     server.log(previous, current, level=2)
-    return not previous or previous == current
+    return not previous or previous != current
 
 
 async def dig_artifacts():
@@ -829,13 +833,21 @@ async def get_water_tiles(loc):
 
 async def move_mouse_in_direction(direction: int, amount: int):
     dx, dy = 0, 0
-    if direction == constants.NORTH:
+    if direction == constants.NORTH or \
+            direction == constants.NORTHEAST or \
+            direction == constants.NORTHWEST:
         dy = -amount
-    elif direction == constants.EAST:
+    if direction == constants.EAST or \
+            direction == constants.NORTHEAST or \
+            direction == constants.SOUTHEAST:
         dx = amount
-    elif direction == constants.SOUTH:
+    if direction == constants.SOUTH or \
+            direction == constants.SOUTHEAST or \
+            direction == constants.SOUTHWEST:
         dy = amount
-    if direction == constants.WEST:
+    if direction == constants.WEST or \
+            direction == constants.NORTHWEST or \
+            direction == constants.SOUTHWEST:
         dx = -amount
     await server.set_mouse_position_relative(dx, dy)
 
@@ -1035,16 +1047,23 @@ async def move_n_tiles(direction: int, n: int, stream):
     await ensure_not_moving()
     from_x, from_y = status["tileX"], status["tileY"]
     to_x, to_y = from_x, from_y
-    if direction == constants.NORTH:
+    
+    if direction == constants.NORTH or \
+            direction == constants.NORTHEAST or \
+            direction == constants.NORTHWEST:
         to_y -= n
-    elif direction == constants.EAST:
+    if direction == constants.EAST or \
+            direction == constants.NORTHEAST or \
+            direction == constants.SOUTHEAST:
         to_x += n
-    elif direction == constants.SOUTH:
+    if direction == constants.SOUTH or \
+            direction == constants.SOUTHEAST or \
+            direction == constants.SOUTHWEST:
         to_y += n
-    elif direction == constants.WEST:
+    if direction == constants.WEST or \
+            direction == constants.NORTHWEST or \
+            direction == constants.SOUTHWEST:
         to_x -= n
-    else:
-        raise ValueError(f"Unexpected direction {direction}")
     path = await path_to_tile(to_x, to_y, status["location"])
     await path.travel(stream)
 

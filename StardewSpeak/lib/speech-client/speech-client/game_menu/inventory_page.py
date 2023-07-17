@@ -24,13 +24,13 @@ async def click_equipment_icon(page, item):
 
 mapping = {
     "item <positive_index>": df_utils.async_action(focus_item, None, 'positive_index'),
-    "row <positive_index>": df_utils.async_action(focus_item, 'positive_index', None),
+    "(row | line) <positive_index>": df_utils.async_action(focus_item, 'positive_index', None),
     "trash can": menu_utils.simple_click("trashCan"),
     "<equipment_icons>": df_utils.async_action(click_equipment_icon, 'equipment_icons'),
 }
 
 equipment_icons = {
-    "boots": {"name": "Boots", "field": "boots"},
+    "(boots | shoes)": {"name": "Boots", "field": "boots"},
     "hat": {"name": "Hat", "field": "hat"},
     "pants": {"name": "Pants", "field": "pants"},
     "left ring | ring one": {"name": "Left Ring", "field": "leftRing"},

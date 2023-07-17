@@ -9,7 +9,7 @@ async def click_skip_btn():
         await menu_utils.click_component(evt['skipBounds'])
 
 mapping = {
-    "skip [cutscene | event]": df_utils.async_action(click_skip_btn),
+    "[cutscene | event] skip": df_utils.async_action(click_skip_btn),
 }
 
 def is_active():

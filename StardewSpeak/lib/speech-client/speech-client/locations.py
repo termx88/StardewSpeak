@@ -182,42 +182,42 @@ async def get_ladder_up_tiles(item):
 
 points = (
     Point(
-        ["go to mail box", "(check | read) mail"],
+        ["mail box [go]", "mail (check | read)"],
         (68, 16),
         "Farm",
         pathfind_fn=game.pathfind_to_adjacent,
         on_arrival=game.do_action,
     ),
     Point(
-        ["buy backpack"],
+        ["backpack buy"],
         (7, 19),
         "SeedShop",
         facing_direction=constants.NORTH,
         on_arrival=game.do_action,
     ),
     Point(
-        ["go to calendar"],
+        ["calendar go"],
         (41, 57),
         "Town",
         facing_direction=constants.NORTH,
         on_arrival=game.do_action,
     ),
     Point(
-        ["go to (billboard | bulletin board)"],
+        ["(billboard | bulletin board) go"],
         (42, 57),
         "Town",
         facing_direction=constants.NORTH,
         on_arrival=game.do_action,
     ),
     Point(
-        ["go to elevator"],
+        ["elevator go"],
         get_elevator_tiles,
         re.compile(r"UndergroundMine\d+"),
         facing_direction=constants.NORTH,
         on_arrival=game.do_action,
     ),
     Point(
-        ["[go to] ladder up"],
+        ["ladder up go"],
         get_ladder_up_tiles,
         re.compile(r"UndergroundMine\d+"),
         facing_direction=constants.NORTH,
@@ -239,7 +239,7 @@ def commands(locs):
 
 
 mapping = {
-    "go to <locations>": objective.objective_action(
+    "<locations> go": objective.objective_action(
         objective.MoveToLocationObjective, "locations"
     ),
 }

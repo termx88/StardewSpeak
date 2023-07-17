@@ -28,7 +28,7 @@ tabs = {
     "crafting": "crafting",
     "collections": "collections",
     "options": "options",
-    "exit [game]": "exit",
+    "[game] exit": "exit",
 }
 
 mapping = {

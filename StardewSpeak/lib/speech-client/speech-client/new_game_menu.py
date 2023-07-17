@@ -38,7 +38,7 @@ farm_types = {
 }
 
 arrows = {
-    "previous": "leftSelectionButtons",
+    "prior": "leftSelectionButtons",
     "next": "rightSelectionButtons",
 }
 arrow_fields = {
@@ -65,17 +65,17 @@ mapping = {
     "farm name": menu_utils.simple_click("farmnameBoxCC"),
     "favorite thing": menu_utils.simple_click("favThingBoxCC"),
     "(random | [roll] dice)": menu_utils.simple_click("randomButton"),
-    "(ok [button] | start game)": menu_utils.simple_click("okButton"),
-    "skip (intro | introduction)": menu_utils.simple_click("skipIntroButton"),
+    "(ok [button] | shock | confirm | start game)": menu_utils.simple_click("okButton"),
+    "(skip (intro | introduction) | (intro | introduction) skip)": menu_utils.simple_click("skipIntroButton"),
     "help": menu_utils.simple_click("coopHelpButton"),
     "next": menu_utils.simple_click("coopHelpLeftButton"),
-    "previous": menu_utils.simple_click("coopHelpRightButton"),
+    "prior": menu_utils.simple_click("coopHelpRightButton"),
     "advanced options": menu_utils.simple_click("advancedOptionsButton"),
     "<farm_types> farm": df_utils.async_action(click_farm, "farm_types"),
     "<arrows> <arrow_fields> [<positive_num>]": df_utils.async_action(
         click_arrow_field, "arrow_fields", "arrows", "positive_num"
     ),
-    "[go] back": menu_utils.simple_click("backButton"),
+    "(back | escape)": menu_utils.simple_click("backButton"),
     **letters.typing_commands(),
 }
 

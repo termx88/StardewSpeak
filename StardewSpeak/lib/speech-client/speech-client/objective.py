@@ -249,7 +249,7 @@ class PlantSeedsOrFertilizerObjective(Objective):
 class HoePlotObjective(Objective):
 
     def __init__(self, n1, n2):
-        self.n1 = n1f
+        self.n1 = n1
         self.n2 = n2
 
     async def run(self):

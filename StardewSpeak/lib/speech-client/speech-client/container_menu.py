@@ -45,16 +45,16 @@ async def click_range(start, end):
     await submenu_wrapper.click_range(submenu, start, end)
 
 mapping = {
-    "deposit <positive_index>": df_utils.async_action(click_range, "positive_index", None),
-    "deposit <positive_index> through <positive_index2>": df_utils.async_action(click_range, "positive_index", 'positive_index2'),
+    "<positive_index> deposit": df_utils.async_action(click_range, "positive_index", None),
+    "<positive_index> through <positive_index2> deposit": df_utils.async_action(click_range, "positive_index", 'positive_index2'),
     "item <positive_index>": df_utils.async_action(focus_item, None, 'positive_index'),
     "row <positive_index>": df_utils.async_action(focus_item, 'positive_index', None),
     "backpack": df_utils.async_action(set_item_grab_submenu, 'inventoryMenu'),
     "container": df_utils.async_action(set_item_grab_submenu, 'itemsToGrabMenu'),
-    "ok": df_utils.async_action(click_button, 'okButton'),
+    "(ok | escape)": df_utils.async_action(click_button, 'okButton'),
     "(trash | garbage) can": df_utils.async_action(click_button, 'trashCan'),
-    "[add to] existing stacks": df_utils.async_action(click_button, 'fillStacksButton'),
-    "[toggle] color picker": df_utils.async_action(click_button, 'colorPickerToggleButton'),
+    "existing stacks [add]": df_utils.async_action(click_button, 'fillStacksButton'),
+    "color picker": df_utils.async_action(click_button, 'colorPickerToggleButton'),
     "organize": df_utils.async_action(click_button, 'organizeButton'),
     "community center": df_utils.async_action(click_button, 'junimoNoteIcon'),
 }

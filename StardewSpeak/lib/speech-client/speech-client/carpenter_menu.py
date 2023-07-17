@@ -16,11 +16,11 @@ async def move_cursor_tile(direction, amount):
 
 mapping = {
     "pan <direction_keys>": objective.objective_action(objective.HoldKeyObjective, "direction_keys"),
-    "previous": df_utils.async_action(click_button, "backButton"),
-    "cancel": df_utils.async_action(click_button, "cancelButton"),
-    "demolish [buildings]": df_utils.async_action(click_button, "demolishButton"),
+    "prior": df_utils.async_action(click_button, "backButton"),
+    "(escape | cancel)": df_utils.async_action(click_button, "cancelButton"),
+    "[buildings] demolish": df_utils.async_action(click_button, "demolishButton"),
     "next": df_utils.async_action(click_button, "forwardButton"),
-    "move [buildings]": df_utils.async_action(click_button, "moveButton"),
+    "[buildings] move": df_utils.async_action(click_button, "moveButton"),
     "build": df_utils.async_action(click_button, "okButton"),
     "paint": df_utils.async_action(click_button, "paintButton"),
     "upgrade": df_utils.async_action(click_button, "upgradeIcon"),

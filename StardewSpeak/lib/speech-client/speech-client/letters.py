@@ -5,43 +5,48 @@ import time
 import df_utils
 
 letter_map = {
-    "(alpha)": "a",
-    "(bravo) ": "b",
-    "(charlie) ": "c",
-    "(danger) ": "d",
-    "(eureka) ": "e",
-    "(foxtrot) ": "f",
-    "(gorilla) ": "g",
-    "(hotel) ": "h",
-    "(india) ": "i",
-    "(juliet) ": "j",
-    "(kilo) ": "k",
-    "(lima) ": "l",
-    "(michael) ": "m",
-    "(november) ": "n",
-    "(Oscar) ": "o",
-    "(papa) ": "p",
-    "(quiet) ": "q",
-    "(romeo) ": "r",
-    "(sierra) ": "s",
-    "(tango) ": "t",
-    "(uniform) ": "u",
-    "(victor) ": "v",
-    "(whiskey) ": "w",
-    "(x-ray) ": "x",
-    "(yankee) ": "y",
-    "(zulu) ": "z",
+    "arch"    : "a",
+    "brov"    : "b",
+    "char"    : "c",
+    "delta"   : "d",
+    "echo"    : "e",
+    "foxy"    : "f",
+    #"goof"    : "g",
+    "golf"    : "g",
+    "hotel"   : "h",
+    "India"   : "i",
+    "julia"   : "j",
+    "kilo"    : "k",
+    "Lima"    : "l",
+    "Mike"    : "m",
+    #"Noy"     : "n",
+    #"novakeen"     : "n",
+    "norway"     : "n",
+    "oscar"   : "o",
+    "prime"   : "p",
+    "Quebec"  : "q",
+    "Romeo"   : "r",
+    "Sierra"  : "s",
+    "tango"   : "t",
+    "uniform" : "u",
+    "victor"  : "v",
+    "wolf"    : "w",
+    # "wages" : "w",
+    # "Whiskey" : "w",
+    "x-ray"   : "x",
+    "yankee"  : "y",
+    "Zulu"    : "z",
 }
 
 numbers = {k: str(v) for k, v in df_utils.digitMap.items()}
 
-capital_letter_map = {f"(capital | upper | uppercase) {k}": v.upper() for k, v in letter_map.items()}
+capital_letter_map = {f"big {k}": v.upper() for k, v in letter_map.items()}
 
 keys = {
-    "backspace": "backspace",
-    "space": "space",
+    "clear": "backspace",
+    "ace": "space",
     "(dot | period)": ".",
-    "dash": "-",
+    "minus": "-",
     "underscore": "_",
 }
 
@@ -88,5 +93,5 @@ def do_dictation(dictation):
 def typing_commands():
     return {
         "<letters_and_keys>": df.Function(lambda **kw: type_characters(kw['letters_and_keys'])),
-        "title <dictation>": dictation_wrap(title_case),
+        "sing <dictation>": dictation_wrap(title_case),
     }

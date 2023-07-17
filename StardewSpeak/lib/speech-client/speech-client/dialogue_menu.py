@@ -20,7 +20,7 @@ async def focus_item(idx):
     await menu_utils.click_component(menu['responseCC'][idx])
 
 mapping = {
-    "(item | response) <positive_index>": df_utils.async_action(focus_item, 'positive_index'),
+    "(item | response | numb) <positive_index>": df_utils.async_action(focus_item, 'positive_index'),
     "<dictation>": df_utils.async_action(do_dictation, 'dictation')
 }
 

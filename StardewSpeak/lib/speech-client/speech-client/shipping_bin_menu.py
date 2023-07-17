@@ -19,7 +19,7 @@ async def focus_item(new_row, new_col):
 mapping = {
     "item <positive_index>": df_utils.async_action(focus_item, None, 'positive_index'),
     "row <positive_index>": df_utils.async_action(focus_item, 'positive_index', None),
-    "ok": df_utils.async_action(menu_utils.click_menu_button, 'okButton', get_shipping_menu),
+    "(ok | shock | escape)": df_utils.async_action(menu_utils.click_menu_button, 'okButton', get_shipping_menu),
     "undo": df_utils.async_action(menu_utils.click_menu_button, 'lastShippedHolder', get_shipping_menu),
 }
 
