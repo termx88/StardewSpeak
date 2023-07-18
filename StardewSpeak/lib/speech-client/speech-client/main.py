@@ -37,8 +37,10 @@ class Observer(RecognitionObserver):
 
     def on_recognition(self, words):
         import server
+        import game
 
         server.log("Recognized:", " ".join(words), level=1)
+        game.show_hud_message("Recognized: {0}".format(" ".join(words)), 4)
 
     def on_failure(self):
         pass
