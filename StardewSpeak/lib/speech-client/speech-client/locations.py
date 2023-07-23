@@ -217,7 +217,7 @@ points = (
         on_arrival=game.do_action,
     ),
     Point(
-        ["ladder up go"],
+        ["ladder (up | sauce) [go]"],
         get_ladder_up_tiles,
         re.compile(r"UndergroundMine\d+"),
         facing_direction=constants.NORTH,

@@ -1,4 +1,11 @@
-to compile for testing
+full compile
+
+cd D:\Downloads\Programing\StardewSpeak\venv\ & Scripts\activate.bat 
+python ..\StardewSpeak\lib\speech-client\build.py                                     
+
+output is in venv\dist
+
+quick compile for testing
 
 python -m compileall -f "<this_dir>"
 	will compile into __pycache__ inside each folder

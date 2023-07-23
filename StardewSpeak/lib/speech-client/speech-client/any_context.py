@@ -27,7 +27,7 @@ non_repeat_mapping = {
         game.move_mouse_in_direction, "mouse_directions", "positive_num"
     ),
     "game state write": df_utils.async_action(game.write_game_state),
-    "(action | check)": df_utils.async_action(game.press_key, constants.ACTION_BUTTON),
+    "action": df_utils.async_action(game.press_key, constants.ACTION_BUTTON),
     "(escape | menu [open | close])": df_utils.async_action(game.press_key, constants.MENU_BUTTON),
     "(squat | kick hold)": df_utils.async_action(server.mouse_hold),
     "(bench | kick release)": df_utils.async_action(server.mouse_release),

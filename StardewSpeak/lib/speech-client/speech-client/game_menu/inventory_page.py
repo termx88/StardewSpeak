@@ -27,6 +27,7 @@ mapping = {
     "(row | line) <positive_index>": df_utils.async_action(focus_item, 'positive_index', None),
     "trash can": menu_utils.simple_click("trashCan"),
     "<equipment_icons>": df_utils.async_action(click_equipment_icon, 'equipment_icons'),
+    "community center": df.Mouse("(1430, 333)") + df_utils.async_action(server.mouse_click, "left", 1),
 }
 
 equipment_icons = {
