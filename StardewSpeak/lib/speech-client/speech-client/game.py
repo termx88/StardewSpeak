@@ -494,6 +494,13 @@ async def ensure_not_moving():
 async def face_direction(direction: int, stream: server.Stream, move_cursor=False):
     await ensure_not_moving()
     status = await server.request("PLAYER_STATUS")
+    
+    direction_8 = direction
+    if direction_8 in (constants.NORTHEAST, constants.NORTHWEST):
+        direction = constants.NORTH   
+    elif direction_8 in (constants.SOUTHEAST, constants.SOUTHWEST):
+        direction = constants.SOUTH
+    
     if status["facingDirection"] != direction:
         btn = directions_to_buttons[direction]
         await press_key(btn)
@@ -506,6 +513,10 @@ async def face_direction(direction: int, stream: server.Stream, move_cursor=Fals
         player_status = await stream.next()
         current_tile = player_status["tileX"], player_status["tileY"]
         target_tile = next_tile(current_tile, direction)
+        if direction_8 in (constants.NORTHEAST, constants.SOUTHEAST):
+            target_tile = next_tile(target_tile, constants.EAST)        
+        elif direction_8 in (constants.NORTHWEST, constants.SOUTHWEST):
+            target_tile = next_tile(target_tile, constants.WEST)
         await set_mouse_position_on_tile(target_tile)
 
 

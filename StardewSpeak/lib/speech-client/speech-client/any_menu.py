@@ -13,35 +13,53 @@ def validate_any_menu(menu):
 async def move_cursor_to_next_component(menu, direction, n=1):
     current_position = None
     target_components = []
-    clickable = list(menu_utils.yield_clickable_components(menu))
-    for cmp in menu_utils.yield_clickable_components(menu):
-        center = cmp["center"]
-        if cmp["containsMouse"]:
-            current_position = cmp
+    
+    times = range(1)
+    second_direction = None
+    if direction in (constants.NORTHEAST, constants.SOUTHEAST):
+        times = range(2)
+        second_direction = constants.EAST
+    elif direction in (constants.NORTHWEST, constants.SOUTHWEST):
+        times = range(2)
+        second_direction = constants.WEST
+    if direction in (constants.NORTHEAST, constants.NORTHWEST):
+        direction = constants.NORTH
+    elif direction in (constants.SOUTHEAST, constants.SOUTHWEST):
+        direction = constants.SOUTH
+    
+    for i in times:
+        if i == 1:
+            direction = second_direction
         else:
-            target_components.append(cmp)
-    if not target_components:
-        return
-    if current_position is None:
-        cx, cy = await server.get_mouse_position()
-        current_position = {"center": (cx, cy), 'visible': True}
-    if direction == constants.NORTH:
-        direction_index, multiplier = 1, -1
-    elif direction == constants.EAST:
-        direction_index, multiplier = 0, 1
-    elif direction == constants.SOUTH:
-        direction_index, multiplier = 1, 1
-    elif direction == constants.WEST:
-        direction_index, multiplier = 0, -1
-    for i in range(n):
-        sort_key = functools.partial(sort_fn, current_position, direction_index, multiplier)
-        res = min(target_components, key=sort_key)
-        right_direction = sort_fn(current_position, direction_index, multiplier, res)[0] == 0
-        if not right_direction:
-            break
-        current_position = res
-    server.log(current_position)
-    await menu_utils.focus_component(current_position)
+            clickable = list(menu_utils.yield_clickable_components(menu))
+            for cmp in menu_utils.yield_clickable_components(menu):
+                center = cmp["center"]
+                if cmp["containsMouse"]:
+                    current_position = cmp
+                else:
+                    target_components.append(cmp)
+            if not target_components:
+                return
+        if current_position is None:
+            cx, cy = await server.get_mouse_position()
+            current_position = {"center": (cx, cy), 'visible': True}
+        if direction == constants.NORTH:
+            direction_index, multiplier = 1, -1
+        elif direction == constants.EAST:
+            direction_index, multiplier = 0, 1
+        elif direction == constants.SOUTH:
+            direction_index, multiplier = 1, 1
+        elif direction == constants.WEST:
+            direction_index, multiplier = 0, -1
+        for i in range(n):
+            sort_key = functools.partial(sort_fn, current_position, direction_index, multiplier)
+            res = min(target_components, key=sort_key)
+            right_direction = sort_fn(current_position, direction_index, multiplier, res)[0] == 0
+            if not right_direction:
+                break
+            current_position = res
+        server.log(current_position)
+        await menu_utils.focus_component(current_position)
 
 
 def sort_fn(current_cmp, direction_index, multiplier, cmp):
