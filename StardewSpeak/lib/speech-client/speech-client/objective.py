@@ -126,6 +126,8 @@ async def move_to_point(point):
         if regex_mismatch or str_mismatch:
             raise game.NavigationFailed(f'Currently in {player_status["location"]} - unable to move to point in location {point.location}')
         await game.navigate_nearest_tile(point.get_tiles, pathfind_fn=point.pathfind_fn)
+        if point.facing_direction != None:
+            await FaceDirectionObjective(point.facing_direction).run()
         if point.on_arrival:
             await point.on_arrival()
 
@@ -307,6 +309,7 @@ async def use_tool_on_animals(tool: str, animal_type=None):
 async def start_shopping():
     async with server.player_status_stream() as stream:
         loc = (await stream.next())['location']
+        facing_direction = None
         if loc == 'AnimalShop':
             tile, facing_direction = (12, 16), constants.NORTH
         elif loc == 'Blacksmith':
@@ -325,6 +328,7 @@ async def start_shopping():
             tile, facing_direction = (4, 19), constants.NORTH
         x, y = tile
         await game.pathfind_to_tile(x, y,  stream)
+        await FaceDirectionObjective(facing_direction).run()
         await game.do_action()
 
 async def pet_animals():
