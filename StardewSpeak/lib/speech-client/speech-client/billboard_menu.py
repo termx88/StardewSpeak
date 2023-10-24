@@ -12,7 +12,7 @@ async def click_button(name):
     await menu_utils.click_component(menu[name])
 
 mapping = {
-    "accept quest": df_utils.async_action(click_button, "acceptQuestButton"),
+    "[quest] accept": df_utils.async_action(click_button, "acceptQuestButton"),
 }
 
 @menu_utils.valid_menu_test
