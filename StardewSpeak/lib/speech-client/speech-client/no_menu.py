@@ -92,7 +92,7 @@ mapping = {
     "[melee] weapon equip": df_utils.async_action(game.equip_melee_weapon),
     "<items> equip": df_utils.async_action(game.equip_item_by_name, "items"),
     "nearest <items> [<positive_index>]": objective.function_objective(go_to_object, "items", "positive_index"),
-    "jump <direction_nums> [<positive_num>]": df_utils.async_action(
+    "(strafe | jump) <direction_nums> [<positive_num>]": df_utils.async_action(
         move_and_face_previous_direction, "direction_nums", "positive_num"
     ),
     "bed go": objective.function_objective(go_to_bed),
