@@ -12,7 +12,7 @@ python -m compileall -f "<this_dir>"
 	.pyc file names must match no ".cpython-39"
 or
 python -m -b compileall -f "<this_dir>"
-	(the -b flag will not write python version in each files name, but will same files next to .py files)
+	(the -b flag will not write python version in each files name, but will save files next to .py files)
 
 then replace inside "\Stardew Valley\Mods\Speak\lib\speech-client\dist\lib"
 (Speak might be called StardewSpeak)
