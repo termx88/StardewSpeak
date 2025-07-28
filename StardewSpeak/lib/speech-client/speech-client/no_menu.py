@@ -127,7 +127,7 @@ mapping = {
     "animals milk": objective.function_objective(objective.use_tool_on_animals, constants.MILK_PAIL),
     "fishing start": objective.function_objective(fishing_menu.start_fishing),
     "navigate <direction_nums>": objective.function_objective(navigate_direction, "direction_nums"),
-    "<letters_and_keys>": df.Function(lambda **kw: letters.type_characters(kw['letters_and_keys'])),
+    "<letters>": df.Function(letters.type_characters),
 }
 
 
@@ -152,7 +152,7 @@ def load_grammar():
             df.Choice("debris", debris),
             items.items_choice,
             df.Choice("points", locations.commands(locations.points)),
-            letters.letters_and_keys,
+            df.Choice("letters", {**letters.letter_map}),
         ],
         context=is_active,
         defaults={"n": 1, "positive_num": 1, "positive_index": 0},
